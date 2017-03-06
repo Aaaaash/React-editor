@@ -19,6 +19,7 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { userinfoRequest, userLibRequest, changePromptInfo, thirdPartyLogin, changeBindSocials } from './actions';
 import { connect } from 'react-redux';
 import { selectLoggedIn, selectUserInfo, selectpromptInfo } from './selectors';
+import styles from './styles.css';
 
 class App extends React.Component { // eslint-disable-line react/prefer-stateless-function
 

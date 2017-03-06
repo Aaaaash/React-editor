@@ -22,6 +22,11 @@ class Editor extends Component {
     HTML: '',
     editMode: 0,
     fullScreen: false,
+    articleInfo: {
+      title: '',
+      tags: '',
+      content: '',
+    },
   }
 
   componentWillReceiveProps(nextProps) {
@@ -85,7 +90,7 @@ class Editor extends Component {
   }
 
   render() {
-    const { articleInfo } = this.props;
+    const { articleInfo } = this.state;
     return (
       <div className={styles.editor}>
         <div className={styles.editor_title}>

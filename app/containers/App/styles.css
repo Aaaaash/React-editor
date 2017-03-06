@@ -1,8 +1,4 @@
-import { injectGlobal } from 'styled-components';
-
-/* eslint no-unused-expressions: 0 */
-injectGlobal`
-  html,
+html,
   body {
     height: 100%;
   }
@@ -114,4 +110,3 @@ injectGlobal`
     -moz-border-radius: 2em;
     border-radius: 2em;
   }
-`;
