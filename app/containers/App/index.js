@@ -29,7 +29,7 @@ class App extends React.Component { // eslint-disable-line react/prefer-stateles
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(theme)}>
-        <div>
+        <div style={{height: '100%'}}>
           {React.Children.toArray(children)}
         </div>
       </MuiThemeProvider>
