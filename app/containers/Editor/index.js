@@ -22,6 +22,7 @@ class Editor extends Component {
     HTML: '',
     editMode: 0,
     fullScreen: false,
+    uploadImg: false,
     articleInfo: {
       title: '',
       tags: '',
@@ -29,14 +30,6 @@ class Editor extends Component {
     },
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   hljs.initHighlightingOnLoad();
-  //   if (nextProps.articleInfo.content !== this.props.articleInfo.content) {
-  //     this.setState({
-  //       HTML: marked(nextProps.articleInfo.content),
-  //     });
-  //   }
-  // }
   insertFlg = (str, flg, sn) => {
     let newstr = '';
     for (let i = 0; i < str.length; i += sn) {
@@ -84,10 +77,24 @@ class Editor extends Component {
       this.setState({ HTML: marked(this.state.articleInfo.content) });
     });
   }
+  handleInsertImg = () => {
+    // this.insertFixedFormat(4, '![alt](www.imagelink.com)');
+    this.setState({ uploadImg: true });
+  }
   render() {
     const { articleInfo } = this.state;
     return (
       <div className={styles.editor}>
+        {this.state.uploadImg ?
+          <div className={styles.upload}>
+            <div className={styles.layout}></div>
+            <div className={styles.dialog}>
+              <p className={styles.drag}>
+                拖拽图片上传
+              </p> 
+            </div>
+          </div> :
+      ''}
         <div className={styles.editor_title}>
           <input
             type="text"
@@ -142,7 +149,7 @@ class Editor extends Component {
                 </button>
               </li>
               <li title="插入图片">
-                <button className={styles.edit_btn} onTouchTap={() => this.insertFixedFormat(4, '![alt](www.imagelink.com)')}>
+                <button className={styles.edit_btn} onTouchTap={this.handleInsertImg}>
                   <i className="fa fa-image"></i>
                 </button>
               </li>
@@ -252,7 +259,6 @@ class Editor extends Component {
 }
 
 Editor.propTypes = {
-  onArticleInfoChange: PropTypes.func,
   articleInfo: PropTypes.object,
   onArticlePush: PropTypes.func,
 };
